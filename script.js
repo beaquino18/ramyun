@@ -8,7 +8,7 @@ window.addEventListener('scroll', function() {
     const scrollingDown = window.scrollY > lastScrollTop;
     lastScrollTop = window.scrollY;
     
-    if (scrollPercent > 30) {
+    if (scrollPercent > 50) {
         // Scrolling down
         nightImage.classList.remove('hidden');
         nightImage.classList.add('visible');
@@ -16,7 +16,7 @@ window.addEventListener('scroll', function() {
         
         // Fade out night image after 70% scroll
         if (scrollPercent > 70) {
-            const opacity = Math.max(0.3, 1 - ((scrollPercent - 70) / 20));
+            const opacity = Math.max(0.3, 1 - ((scrollPercent - 50) / 20));
             nightImage.style.opacity = opacity;
         } else {
             nightImage.style.opacity = 1;

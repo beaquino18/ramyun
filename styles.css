@@ -31,13 +31,28 @@
   opacity: 1;
 }
 
+.bento-image {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1);
+  transition: transform 0.3s ease-out;
+  z-index: 2;
+  max-width: 300px;
+}
+
+.bento-zoom-out {
+  transform: translate(-50%, -50%) scale(0.5);
+  opacity: 0.8;
+}
+
 /* Add to styles.css */
 .content-container {
   position: relative;
   min-height: 100vh;
   margin-top: 100vh;
-  background: rgba(0, 0, 0, 0.8);
-  color: white;
+  background: white;
+  color: black;
   z-index: 3;
 }
 
@@ -49,6 +64,38 @@
 
 .fade-in {
   opacity: 1;
+}
+
+@keyframes ticker {
+  0% {
+      transform: translateX(100%);
+  }
+  100% {
+      transform: translateX(-100%);
+  }
+}
+
+.list-unstyled {
+  display: flex;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 100%;
+  padding: 10px 0;
+}
+
+.slide-in {
+  display: inline-block;
+  padding: 0 20px;
+  animation: ticker 10s linear infinite;
+}
+
+/* Remove individual delays since we want continuous flow */
+.slide-in:nth-child(1),
+.slide-in:nth-child(2),
+.slide-in:nth-child(3),
+.slide-in:nth-child(4),
+.slide-in:nth-child(5) {
+  animation-delay: 0s;
 }
 
 /* Add to styles.css */
@@ -70,11 +117,4 @@
   color: rgba(255, 255, 255, 0.9);
 }
 
-.navbar-dark .navbar-nav .nav-link:hover {
-  color: #ffffff;
-}
 
-.navbar-dark .navbar-brand {
-  color: #ffffff;
-  font-weight: bold;
-}
