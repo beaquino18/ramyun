@@ -8,24 +8,55 @@ window.addEventListener('scroll', function() {
     const scrollingDown = window.scrollY > lastScrollTop;
     lastScrollTop = window.scrollY;
     
-    if (scrollPercent > 50) {
-        // Scrolling down
+    // Start transition earlier at 60%
+    if (scrollPercent > 30) {
         nightImage.classList.remove('hidden');
         nightImage.classList.add('visible');
-        dayImage.classList.add('hidden');
         
-        // Fade out night image after 70% scroll
-        if (scrollPercent > 70) {
-            const opacity = Math.max(0.3, 1 - ((scrollPercent - 50) / 20));
-            nightImage.style.opacity = opacity;
+        // Calculate opacity over a larger range (60% to 90%)
+        const nightOpacity = Math.min(1, (scrollPercent - 30) / 30);
+        const dayOpacity = Math.max(0, 1 - ((scrollPercent - 30) / 30));
+        
+        // Apply smoother transitions
+        nightImage.style.transition = 'opacity 0.3s ease-in-out';
+        dayImage.style.transition = 'opacity 0.3s ease-in-out';
+        
+        nightImage.style.opacity = nightOpacity;
+        dayImage.style.opacity = dayOpacity;
+        
+        if (dayOpacity < 0.1) {
+            dayImage.classList.add('hidden');
         } else {
-            nightImage.style.opacity = 1;
+            dayImage.classList.remove('hidden');
         }
     } else {
-        // Scrolling up
-        nightImage.style.opacity = 1;
+        // Reset when scrolling back up
         nightImage.classList.add('hidden');
         nightImage.classList.remove('visible');
         dayImage.classList.remove('hidden');
+        dayImage.style.opacity = 1;
+        nightImage.style.opacity = 0;
+    }
+});
+
+
+// Modify the existing scroll event listener in script.js
+window.addEventListener('scroll', () => {
+    const navbar = document.querySelector('.navbar');
+    const scrollPosition = window.pageYOffset;
+    const scrollPercent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+    
+    // Show navbar after scrolling 50px
+    if (scrollPosition > 50) {
+        navbar.classList.add('visible');
+    } else {
+        navbar.classList.remove('visible');
+    }
+    
+    // Dark mode toggle
+    if (scrollPercent > 30) {
+        navbar.classList.add('dark-mode');
+    } else {
+        navbar.classList.remove('dark-mode');
     }
 });
