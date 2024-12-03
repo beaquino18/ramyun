@@ -1,0 +1,151 @@
+@import url('https://fonts.googleapis.com/css2?family=Mochiy+Pop+P+One&display=swap');
+
+.header-container {
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.header-animation {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity 2s ease-in-out;
+}
+
+.header-text {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+  color: white;
+  text-align: center;
+  font-size: 3rem;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  width: 100%;
+}
+
+.day {
+  z-index: 1;
+}
+
+.night {
+  z-index: 2;
+}
+
+.hidden {
+  opacity: 0;
+}
+
+.visible {
+  opacity: 1;
+}
+
+/* Add to styles.css */
+.content-container {
+  position: relative;
+  min-height: 100vh;
+  margin-top: 100vh;
+  background: white;
+  color: black;
+  z-index: 3;
+}
+
+.company-info {
+  padding: 5rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.fade-in {
+  opacity: 1;
+}
+
+@keyframes ticker {
+  0% {
+      transform: translateX(100%);
+  }
+  100% {
+      transform: translateX(-100%);
+  }
+}
+
+.list-unstyled {
+  display: flex;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 100%;
+  padding: 10px 0;
+}
+
+.slide-in {
+  display: inline-block;
+  padding: 0 20px;
+  animation: ticker 10s linear infinite;
+}
+
+/* Remove individual delays since we want continuous flow */
+.slide-in:nth-child(1),
+.slide-in:nth-child(2),
+.slide-in:nth-child(3),
+.slide-in:nth-child(4),
+.slide-in:nth-child(5) {
+  animation-delay: 0s;
+}
+
+/* Add to styles.css */
+.navbar {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+  padding: 1rem 0;
+  transition: background-color 0.3s ease;
+}
+
+:root {
+  --navbar-day: rgba(255, 255, 255, 0.8);
+  --navbar-night: rgba(41, 41, 57, 0.8);
+}
+
+/* Update navbar styles in styles.css */
+.navbar {
+  position: fixed;
+  width: 100%;
+  top: 0; /* Change from -100px to 0 */
+  left: 0;
+  background-color: var(--navbar-day);
+  backdrop-filter: blur(5px);
+  transform: translateY(-100%); /* Hide initially with transform */
+  transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out;
+  z-index: 1000;
+}
+
+.navbar.visible {
+  transform: translateY(0); /* Show by resetting transform */
+}
+.navbar.dark-mode {
+  background-color: var(--navbar-night);
+}
+
+.navbar.dark-mode .nav-link,
+.navbar.dark-mode .navbar-toggler-icon {
+  color: white;
+}
+
+/* Brand Styling */
+.brand-name {
+  font-family: 'Mochiy Pop P One', sans-serif;
+  font-size: 1.5rem;
+  color: #fff;
+}
+
+.navbar-brand {
+  padding: 0 1em;
+}

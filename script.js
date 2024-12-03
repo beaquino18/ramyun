@@ -40,7 +40,6 @@ window.addEventListener('scroll', function() {
 });
 
 
-// Modify the existing scroll event listener in script.js
 window.addEventListener('scroll', () => {
     const navbar = document.querySelector('.navbar');
     const scrollPosition = window.pageYOffset;
