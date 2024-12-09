@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Mochiy+Pop+P+One&display=swap');
 
+
 * {
   margin: 0;
   padding: 0;
@@ -7,16 +8,19 @@
 
 body {
   min-height: 1500px;
+  margin: 0;
+  padding: 0;
+  background-color: #1d3f46;
 }
 
-section {
+.image-hero {
   position: relative;
   width: 100%;
   height: 100vh;
   overflow: hidden;
 }
 
-section::before {
+.image-hero::before {
   content: '';
   position: absolute;
   bottom: 0;
@@ -26,7 +30,7 @@ section::before {
   z-index: 10000;
 }
 
-section::after {
+.image-hero::after {
   content: '';
   position: absolute;
   top: 0;
@@ -51,7 +55,7 @@ section img {
   position: relative;
   margin-top: 150px;
   text-align: center;
-  color: #fff;
+  color: gray;
   font-size: 8em;
   z-index: 2;
   text-decoration: dashed;
@@ -79,7 +83,7 @@ section img {
   backdrop-filter: blur(5px);
   transform: translateY(0); 
   transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out;
-  z-index: 1000;
+  z-index: 1001;
 }
 
 .navbar.visible {
@@ -115,29 +119,267 @@ section img {
   padding: 0 1em;
 }
 
+.cart-item {
+  position: relative;
+}
+
+.cart-item span{
+  display: flex;
+  width: 15px;
+  height: 15px;
+  background-color: red;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  border-radius: 50%;
+  position: absolute;
+  top: 60%;   /* Adjust this to move badge up/down */
+  right: -5px;   /* Add this to position on right side */
+  font-size: 12px;
+}
+
 .cart {
-  width: 24px;
-  height: 24px;
-  margin-left: auto;
+  width: 30px;
+  height: 30px;
+  /* margin-left: auto; */
 }
 
 .order {
   background-color: #1d3f46;
   height: 1000px;
+  margin-top: 0;
+  position: relative;
+  z-index: 1;
+  overflow: hidden; 
 }
 
 .order-list {
   display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  flex-wrap: wrap;
-  padding: 2rem 0;
+  justify-content: center;
+  gap: 10rem;
+  padding: 2rem;
 }
 
 .ramen, .bento{
   margin-top: 10%;
-  width: 750px;
-  height: 500px;
-  border: 10px solid white;
+  width: 400px;
+  height: 34rem;
+  background-color: #e7efd9;
+  border-radius: 10%;
+  color: black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 1rem;
+  position: relative;
+}
+
+.ramen {
+  z-index: 100;
+}
+
+.bento.hidden {
+  opacity: 0;
+  visibility: hidden;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+  z-index: 90; /* Lower than ramen's z-index */
+}
+
+.ramen.hidden {
+  opacity: 0;
+  visibility: hidden;
+  display: none;
+  transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+}
+
+.item-title {
+  text-align: center;
+}
+
+.add-cart {
+align-items: center;
+}
+
+.ramen-img {
+  width: 100%;
+  height: auto;
+  margin-bottom: 1rem;
+  position: relative;
+}
+
+.bento-img {
+  width: 100%;
+  height: auto;
+  margin-bottom: 1rem;
+  position: relative;
+}
+
+.customize-order-ramen {
+  position: absolute;
+  top: 1000px;
+  left: 670px;
+  width: 600px;
+  height: 400px;
+  opacity: 0;
+  transform: translateX(100%);
+  transition: all 0.3s ease-in-out;
+  z-index: 1;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+
+.customize-order-ramen.show {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.customize-ramen:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.customize-order-bento {
+  position: absolute;
+  top: 1000px;
+  right: 670px;
+  width: 600px;
+  height: 400px;
+  opacity: 0;
+  transform: translateX(-100%); /* Changed from 100% to -100% */
+  transition: all 0.3s ease-in-out;
+  z-index: 1;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.customize-order-bento.show {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.customize-bento:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.ramen-box, .bento-box {
+  height: 100%;
+  background-color: #F6795B;
+  border-radius: 15px;
+  position: relative;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+.ramen-box h1, .bento-box h1 {
   color: white;
+  text-align: center;
+  font-family: 'Mochiy Pop P One', sans-serif;
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+}
+
+.ramen-box .close, .bento-box .close {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: white;
+  border: none;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  cursor: pointer;
+  color: #F6795B;
+  font-weight: bold;
+  transition: transform 0.2s;
+}
+
+
+.ramen-box .close:hover {
+  transform: scale(1.1);
+}
+
+.ramen-options {
+  flex: 1;
+  overflow-y: auto;
+  padding: 10px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.option-group {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 12px;
+  border-radius: 10px;
+}
+
+.option-title {
+  color: white;
+  font-weight: bold;
+  margin-bottom: 8px;
+  font-family: 'Mochiy Pop P One', sans-serif;
+  font-size: 0.9rem;
+}
+
+.option-choices {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.choice-btn {
+  background: white;
+  color: #F6795B;
+  border: 2px solid white;
+  padding: 6px 12px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+}
+
+.choice-btn:hover {
+  background: transparent;
+  color: white;
+}
+
+.choice-btn.active {
+  background: transparent;
+  color: white;
+  pointer-events: none;
+}
+
+
+.customize-ramen, .customize-bento {
+  background: #F6795B;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 25px;
+  cursor: pointer;
+  font-family: 'Mochiy Pop P One', sans-serif;
+  transition: transform 0.2s;
+}
+
+.customize-ramen:hover, .customize-bento:hover {
+  transform: scale(1.05);
+}
+
+.add-to-cart {
+  background: #F6795B;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 25px;
+  cursor: pointer;
+  font-family: 'Mochiy Pop P One', sans-serif;
+  transition: transform 0.2s;
 }
