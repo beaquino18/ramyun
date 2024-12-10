@@ -16,58 +16,6 @@ window.addEventListener('scroll', function() {
   text.style.top = value * 1 + 'px';
 });
 
-let lastScrollTop = 0;
-
-window.addEventListener('scroll', function() {
-    const nightImage = document.querySelector('.night');
-    const dayImage = document.querySelector('.day');
-    const text = document.getElementById('text');
-    
-    const scrollPercent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
-    const scrollingDown = window.scrollY > lastScrollTop;
-    lastScrollTop = window.scrollY;
-    
-    // Text fade out logic
-    const textOpacity = 1 - (window.scrollY / (window.innerHeight * 0.5));
-    if (textOpacity > 0) {
-        text.style.opacity = textOpacity;
-        text.style.visibility = 'visible';
-    } else {
-        text.style.opacity = 0;
-        text.style.visibility = 'hidden';
-    }
-    
-    // Start transition earlier at 60%
-    if (scrollPercent > 30) {
-        nightImage.classList.remove('hidden');
-        nightImage.classList.add('visible');
-        
-        // Calculate opacity over a larger range (60% to 90%)
-        const nightOpacity = Math.min(1, (scrollPercent - 30) / 30);
-        const dayOpacity = Math.max(0, 1 - ((scrollPercent - 30) / 30));
-        
-        // Apply smoother transitions
-        nightImage.style.transition = 'opacity 0.3s ease-in-out';
-        dayImage.style.transition = 'opacity 0.3s ease-in-out';
-        
-        nightImage.style.opacity = nightOpacity;
-        dayImage.style.opacity = dayOpacity;
-        
-        if (dayOpacity < 0.1) {
-            dayImage.classList.add('hidden');
-        } else {
-            dayImage.classList.remove('hidden');
-        }
-    } else {
-        // Reset when scrolling back up
-        nightImage.classList.add('hidden');
-        nightImage.classList.remove('visible');
-        dayImage.classList.remove('hidden');
-        dayImage.style.opacity = 1;
-        nightImage.style.opacity = 0;
-    }
-});
-
 // Parallax effect
 window.addEventListener('scroll', () => {
     const navbar = document.querySelector('.navbar');
@@ -109,16 +57,16 @@ document.querySelector('.customize-ramen').addEventListener('click', function() 
     customizeButton.disabled = true;
 });
 
-// // Show customize bento when customize button is clicked. Hide ramen section.
-// document.querySelector('.customize-bento').addEventListener('click', function() {
-//     const customizeSection = document.querySelector('.customize-order-bento');
-//     const ramenSection = document.querySelector('.ramen');
-//     const customizeButton = document.querySelector('.customize-bento');
+// Show customize bento when customize button is clicked. Hide ramen section.
+document.querySelector('.customize-bento').addEventListener('click', function() {
+    const customizeSection = document.querySelector('.customize-order-bento');
+    const ramenSection = document.querySelector('.ramen');
+    const customizeButton = document.querySelector('.customize-bento');
     
-//     customizeSection.classList.add('show');
-//     ramenSection.classList.add('hidden');
-//     customizeButton.disabled = true;
-// });
+    customizeSection.classList.add('show');
+    ramenSection.classList.add('hidden');
+    customizeButton.disabled = true;
+});
 
 // Close button function for ramen customization
 document.querySelector('.close').addEventListener('click', function() {
@@ -132,7 +80,7 @@ document.querySelector('.close').addEventListener('click', function() {
 });
 
 // Close button function for bento customization
-document.querySelector('.close-bento').addEventListener('click', function() {
+document.querySelector('.bento-box .close').addEventListener('click', function() {
     const customizeSection = document.querySelector('.customize-order-bento');
     const ramenSection = document.querySelector('.ramen');
     const customizeButton = document.querySelector('.customize-bento');
@@ -183,5 +131,50 @@ document.querySelector('.add-to-cart').addEventListener('click', function() {
     
     customizeSection.classList.remove('show');
     bentoSection.classList.remove('hidden');
+    customizeButton.disabled = false;
+});
+
+// add-to-cart button for customize bento
+document.querySelector('.bento-box .add-to-cart').addEventListener('click', function() {
+    const customizeSection = document.querySelector('.customize-order-bento');
+    const ramenSection = document.querySelector('.ramen');
+    const customizeButton = document.querySelector('.customize-bento');
+    
+    customizeSection.classList.remove('show');
+    ramenSection.classList.remove('hidden');
+    customizeButton.disabled = false;
+});
+
+// Add this at the top of order.js
+let cartCount = 0;
+const cartCountElement = document.querySelector('.cart-item span');
+
+// Update the add-to-cart event listener for ramen
+document.querySelector('.add-to-cart').addEventListener('click', function() {
+    const customizeSection = document.querySelector('.customize-order-ramen');
+    const bentoSection = document.querySelector('.bento');
+    const customizeButton = document.querySelector('.customize-ramen');
+    
+    // Increment cart count and update display
+    cartCount++;
+    cartCountElement.textContent = cartCount;
+    
+    customizeSection.classList.remove('show');
+    bentoSection.classList.remove('hidden');
+    customizeButton.disabled = false;
+});
+
+// Update the add-to-cart event listener for bento
+document.querySelector('.bento-box .add-to-cart').addEventListener('click', function() {
+    const customizeSection = document.querySelector('.customize-order-bento');
+    const ramenSection = document.querySelector('.ramen');
+    const customizeButton = document.querySelector('.customize-bento');
+    
+    // Increment cart count and update display
+    cartCount++;
+    cartCountElement.textContent = cartCount;
+    
+    customizeSection.classList.remove('show');
+    ramenSection.classList.remove('hidden');
     customizeButton.disabled = false;
 });
