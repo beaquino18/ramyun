@@ -1,0 +1,82 @@
+@import url('https://fonts.googleapis.com/css2?family=Funnel+Sans:ital,wght@0,300..800;1,300..800&family=Mochiy+Pop+P+One&display=swap');
+
+.brand-name {
+  font-family: 'Mochiy Pop P One', sans-serif;
+  font-size: 1.5rem;
+  
+}
+
+.navbar-brand {
+  padding: 0 1em;
+}
+
+.cart-item {
+  position: relative;
+}
+
+.cart-item span{
+  display: flex;
+  width: 15px;
+  height: 15px;
+  background-color: red;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  border-radius: 50%;
+  position: absolute;
+  top: 60%;   /* Adjust this to move badge up/down */
+  right: -5px;   /* Add this to position on right side */
+  font-size: 12px;
+}
+
+.cart {
+  width: 30px;
+  height: 30px;
+  /* margin-left: auto; */
+}
+
+.nav-story, .nav-order {
+  font-family: 'Funnel Sans', sans-serif;
+}
+
+.navbar {
+  position: fixed;
+  width: 100%;
+  height: 80px;
+  padding: 0.5rem 1rem;
+  top: 0;
+  left: 0;
+  background-color: #1d3f46 !important;
+  backdrop-filter: blur(5px);
+  transform: translateY(0);
+  transition: all 0.3s ease-in-out;
+  z-index: 1001;
+}
+
+.navbar.visible {
+  transform: translateY(0);
+}
+
+.navbar.dark-mode {
+  background-color: #e7efd9 !important;
+  transition: all 0.3s ease-in-out;
+}
+
+.navbar.dark-mode .nav-link,
+.navbar.dark-mode .navbar-toggler-icon,
+.navbar.dark-mode .brand-name {
+  color: #1d3f46 !important;
+  transition: all 0.3s ease-in-out;
+}
+
+.navbar .nav-link,
+.navbar .navbar-toggler-icon,
+.navbar .brand-name {
+  color: white;
+  transition: all 0.3s ease-in-out;
+}
+
+.navbar.order-section {
+  background-color: #e7efd9 !important;
+  color: #1d3f46 !important;
+}

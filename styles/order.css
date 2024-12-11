@@ -1,0 +1,405 @@
+@import url('https://fonts.googleapis.com/css2?family=Funnel+Sans:ital,wght@0,300..800;1,300..800&family=Mochiy+Pop+P+One&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 1500px;
+  margin: 0;
+  padding: 0;
+  background-color: #1d3f46;
+}
+
+/* ======= IMAGE HERO PARALLAX EFFECT ======== */
+.image-hero {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.image-hero::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 100px;
+  background: linear-gradient(to top, #1d3f46, transparent);
+  z-index: 10000;
+}
+
+.image-hero::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0%;
+  width: 100%;
+  height: 100px;
+  z-index: 10000;
+  mix-blend-mode: color;
+}
+
+
+section img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+#text {
+  position: relative;
+  margin-top: 150px;
+  text-align: center;
+  color: #1d3f46;
+  font-size: 8em;
+  z-index: 3;
+  text-decoration: dashed;
+  font-family: 'Poppins', sans-serif;
+}
+
+#shop3 {
+  z-index: 5;
+}
+
+#shop4 {
+  z-index: 2;
+}
+
+#shop2 {
+  z-index: 4;
+}
+
+/* ======= ORDER CARDS ======== */
+
+.order {
+  background-color: #1d3f46;
+  height: 800px;
+  margin-top: 100px;
+  position: relative;
+  z-index: 1;
+  overflow: hidden; 
+}
+
+.order-list {
+  display: grid;
+  grid-template-columns: 400px 400px;
+  grid-template-areas: "ramen bento";
+  gap: 10rem;
+  padding: 1rem;
+  width: 100%;
+  justify-content: center;
+}
+
+.ramen {
+  grid-area: ramen;
+  z-index: 100;
+  overflow: hidden;
+}
+
+.bento {
+  grid-area: bento;
+  z-index: 100;
+}
+
+.ramen, .bento{
+  margin-top: 10%;
+  width: 400px;
+  height: 570px;
+  background-color: #e7efd9;
+  border-radius: 10%;
+  color: black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 1rem;
+  position: relative;
+}
+
+.bento.hidden {
+  opacity: 0;
+  visibility: hidden;
+  display: none;
+  transform: none;
+  pointer-events: none;
+  transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+}
+
+.ramen.hidden {
+  opacity: 0;
+  visibility: hidden;
+  display: none;
+  pointer-events: none;
+  transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+}
+
+.item-title {
+  text-align: center;
+}
+
+.add-cart {
+align-items: center;
+}
+
+.ramen-img {
+  width: 100%;
+  height: 300px;
+  margin-bottom: 1rem;
+  position: relative;
+}
+
+.bento-img {
+  width: 100%;
+  height: 300px;
+  margin-bottom: 1rem;
+  position: relative;
+}
+.price {
+  margin-top: 1rem;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Order section hover effects */
+.order-list .ramen,
+.order-list .bento {
+  transition: all 0.3s ease;
+  padding: 2rem;
+  cursor: pointer;
+}
+
+.order-list .ramen:hover,
+.order-list .bento:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.ramen-img,
+.bento-img {
+  transition: transform 0.3s ease;
+}
+
+.order-list .ramen:hover .ramen-img,
+.order-list .bento:hover .bento-img {
+  transform: scale(1.05);
+}
+
+.customize-ramen,
+.customize-bento {
+  transition: all 0.3s ease;
+  background-color: #F6795B;
+  color: white;
+  border: 2px solid #F6795B;
+  padding: 10px 20px;
+  border-radius: 25px;
+}
+
+.customize-ramen:hover,
+.customize-bento:hover {
+  background-color: transparent;
+  color: #F6795B;
+  transform: scale(1.1);
+}
+
+.item-title {
+  transition: color 0.3s ease;
+  font-family: 'Poppins', sans-serif;
+}
+
+.order-list .ramen:hover .item-title,
+.order-list .bento:hover .item-title {
+  color: #F6795B;
+}
+
+
+/* ======= CUSTOMIZE OPTION SHOW ======== */
+
+.customize-order-ramen {
+  position: absolute;
+  top: 1050px;
+  left: 670px;
+  width: 600px;
+  height: 400px;
+  opacity: 0;
+  transform: translateX(100%);
+  transition: all 0.3s ease-in-out;
+  z-index: 1;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+
+.customize-order-ramen.show {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.customize-ramen:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.customize-order-bento {
+  position: absolute;
+  top: 1050px;
+  right: 670px;
+  width: 600px;
+  height: 400px;
+  opacity: 0;
+  transform: translateX(-100%); /* Changed from 100% to -100% */
+  transition: all 0.3s ease-in-out;
+  z-index: 1;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.customize-order-bento {
+  scrollbar-width: none; 
+  -ms-overflow-style: none; 
+}
+
+.customize-order-bento::-webkit-scrollbar {
+  display: none; /* Chrome, Safari and Opera */
+}
+
+/* Add smooth scrolling */
+.customize-order-bento {
+  scroll-behavior: smooth;
+  overflow-y: auto;
+}
+
+.customize-order-bento.show {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.customize-bento:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.ramen-box, .bento-box {
+  height: 100%;
+  background-color: #F6795B;
+  border-radius: 15px;
+  position: relative;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+.ramen-box h1, .bento-box h1 {
+  color: white;
+  text-align: center;
+  font-family: 'Mochiy Pop P One', sans-serif;
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+}
+
+.ramen-box .close, .bento-box .close {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: white;
+  border: none;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  cursor: pointer;
+  color: #F6795B;
+  font-weight: bold;
+  transition: transform 0.2s;
+}
+
+
+.ramen-box .close:hover {
+  transform: scale(1.1);
+}
+
+.ramen-options, .bento-options {
+  flex: 1;
+  overflow-y: auto;
+  padding: 10px;
+  gap: 10px;
+  
+}
+
+.option-group {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 12px;
+  border-radius: 10px;
+  margin: 1rem;
+}
+
+.option-title {
+  color: white;
+  font-weight: bold;
+  margin-bottom: 8px;
+  font-family: 'Mochiy Pop P One', sans-serif;
+  font-size: 0.9rem;
+}
+
+.option-choices {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.choice-btn {
+  background: white;
+  color: #F6795B;
+  border: 2px solid white;
+  padding: 6px 12px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+}
+
+.choice-btn:hover {
+  background: transparent;
+  color: white;
+}
+
+.choice-btn.active {
+  background: transparent;
+  color: white;
+  pointer-events: none;
+}
+
+
+.customize-ramen, .customize-bento {
+  background: #F6795B;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 25px;
+  cursor: pointer;
+  font-family: 'Mochiy Pop P One', sans-serif;
+  transition: transform 0.2s;
+}
+
+.customize-ramen:hover, .customize-bento:hover {
+  transform: scale(1.05);
+}
+
+.add-to-cart {
+  background: #F6795B;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 25px;
+  cursor: pointer;
+  font-family: 'Mochiy Pop P One', sans-serif;
+  transition: transform 0.2s;
+}
+
+.add-to-cart:hover {
+  background: #ff8f75;
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}

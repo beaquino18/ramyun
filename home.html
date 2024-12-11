@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Innovative solutions for your business needs">
+    <title>Home</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles/home.css">
+    <link rel="stylesheet" href="styles/footer.css">
+    <link rel="stylesheet" href="styles/navbar.css">
+</head>
+<body>
+    <!-- Header Section -->
+    <nav class="navbar navbar-expand-md navbar-dark bg-secondary">
+        <div class="container-fluid">
+            <!-- Mobile brand -->
+            <a class="navbar-brand d-md-none" href="#">
+                <div class="brand-name">TezukuriLab</div>
+            </a>
+            
+            <!-- Toggler button -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <!-- Collapsible content -->
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav w-100 position-relative">
+                    <li class="nav-item">
+                        <a class="nav-link nav-story" aria-current="page" href="about.html">Our Story</a>
+                    </li>
+                    <li class="nav-item position-absolute start-50 translate-middle-x">
+                        <!-- Desktop brand -->
+                        <a class="navbar-brand d-none d-md-block" href="home.html">
+                            <div class="brand-name">TezukuriLab</div>
+                        </a>
+                    </li>
+                    <li class="nav-item ms-auto">
+                        <a class="nav-link nav-order" href="order.html">Order</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link cart-item" href="checkout.html"><img src="images/cart-blue.svg" class="cart"><span>0</span></a>
+                        
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="header-container">
+        <img src="images/bg-day.svg" alt="header" class="header-animation day">
+        <img src="images/bg-night.svg" alt="header" class="header-animation night hidden">
+
+        <div class="header-text">
+            <p>Authentic Japanese Cuisine</p>
+        </div>
+    </div>
+
+    <!-- Spacer for scroll effect -->
+    <div style="height: 200vh;">
+        <div class="container text-center py-5">
+        </div>
+    </div>
+
+    <!-- Company Info Section -->
+    <div class="content-container" id="about">
+        <div class="company-info">
+            <h2 class="">About Us</h2>
+            <p class="">At Tezukuri Lab, we bring authentic Japanese cuisine directly to your doorstep. "Tezukuri" (手作り) means handmade in Japanese, reflecting our commitment to craft each dish with care and precision, just as it's done in Japan.</p>
+            <p class="">Founded by passionate Japanese culinary experts, we specialize in preparing customized bento boxes and authentic ramen using fresh, Japanese-sourced ingredients. Our professional chefs create each order in real-time, ensuring restaurant-quality meals delivered straight to your home.</p>
+        </div>
+        <!-- Ticker -->
+        <div class="ticker-wrap">
+            <div class="ticker">
+                <span class="item-collection-1">
+                    <div class="item">🍜 Authentic Japanese ingredients</div>
+                    <div class="item">👨‍🍳 Professional chef preparation</div>
+                    <div class="item">🔥 Fresh, made-to-order meals</div>
+                    <div class="item">⚡ Swift doorstep delivery</div>
+                    <div class="item">🎯 Customizable options</div>
+                </span>
+                <span class="item-collection-2">
+                    <div class="item">🍜 Authentic Japanese ingredients</div>
+                    <div class="item">👨‍🍳 Professional chef preparation</div>
+                    <div class="item">🔥 Fresh, made-to-order meals</div>
+                    <div class="item">⚡ Swift doorstep delivery</div>
+                    <div class="item">🎯 Customizable options</div>
+                </span>
+            </div>
+        </div>
+        
+        <button class="contact-button">Contact Us</button>
+    </div>
+
+    <!-- How it Works Section -->
+    <section class="process-section">
+        <h2>How It Works</h2>
+        <div class="process-steps">
+            <div class="step">
+                <div class="image-container-works-section">
+                    <img src="images/1 - choose.svg" alt="Choose" class="step-image">
+                    <img src="images/ray.svg" alt="Ray" class="ray">
+                </div>
+                <div class="image-container-label">
+                    <div class="step-number">1</div>
+                    <h3>Choose Your Meal</h3>
+                    <p>Select from our ramen or bento options</p>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="image-container-works-section">
+                    <img src="images/2 - customize.svg" alt="Customize" class="step-image">
+                    <img src="images/ray.svg" alt="Ray" class="ray">
+                </div>
+                    <div class="image-container-label">
+                    <div class="step-number">2</div>
+                    <h3>Customize</h3>
+                    <p>Make it yours with our various options</p>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="image-container-works-section">
+                    <img src="images/3 - prepare.svg" alt="Prepare" class="step-image">
+                    <img src="images/ray.svg" alt="Ray" class="ray">
+                </div>
+                <div class="image-container-label">
+                    <div class="step-number">3</div>
+                    <h3>We Prepare</h3>
+                    <p>Our chefs craft your order fresh</p>
+                    </div>
+                </div>
+
+            <div class="step">
+                <div class="image-container-works-section">
+                    <img src="images/4 - deliver.svg" alt="Deliver" class="step-image">
+                    <img src="images/ray.svg" alt="Ray" class="ray">
+                </div>
+                <div class="image-container-label">
+                    <div class="step-number">4</div>
+                    <h3>Quick Delivery</h3>
+                    <p>Enjoy authentic Japanese cuisine at home</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="cta-content">
+            <h2>Ready to Order?</h2>
+            <p>Experience authentic Japanese cuisine today</p>
+            <a href="order.html" class="cta-button">Order Now</a>
+        </div>
+    </section>
+
+
+    <!-- Footer -->
+    <footer class="footer-container">
+        <div class="footer-column">
+            <h3>Get in touch</h3>
+            <button class="footer-button">Frequent Questions</button>
+            <button class="footer-button">Contact Us</button>
+            <button class="footer-button">Newsletter Sign-up</button>
+        </div>
+        <div class="footer-column">
+            <h3>Shop</h3>
+            <a href="#">Products</a>
+            <a href="#">Categories</a>
+            <a href="#">Best Sellers</a>
+        </div>
+        <div class="footer-column">
+            <h3>Support</h3>
+            <a href="#">Help Center</a>
+            <a href="#">Returns</a>
+            <a href="#">Shipping Info</a>
+        </div>
+        <div class="footer-column">
+            <h3>About</h3>
+            <a href="#">Our Story</a>
+            <a href="#">Careers</a>
+            <a href="#">Press</a>
+        </div>
+        <div class="footer-column">
+            <h3>My Account</h3>
+            <a href="#">Login</a>
+            <a href="#">Register</a>
+            <a href="#">Order History</a>
+        </div>
+        <div class="footer-column">
+            <input type="email" placeholder="Email address" class="footer-input">
+            <button class="footer-button">Subscribe</button>
+            <img src="images/footer-image.svg" class="footer-image">
+        </div>
+    </footer>
+
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/home.js"></script>
+</body>
+</html>
