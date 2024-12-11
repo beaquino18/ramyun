@@ -68,6 +68,12 @@
   padding-top: 4rem;
   padding-bottom: 2rem;
   text-align: center;
+  font-family: 'Poppins', sans-serif;
+}
+
+.company-info h2 {
+  font-size: 3rem;
+  margin-bottom: 2rem;
 }
 
 .fade-in {
@@ -86,6 +92,7 @@ body { margin: 0; }
   bottom: 0;
   background-color: #F6795B; 
   margin-bottom: 3rem;
+  font-family: 'Poppins', sans-serif;
 }
 .ticker {
   display: inline-block;
@@ -135,7 +142,7 @@ body { margin: 0; }
   padding: 10px 20px;
   border-radius: 40px;
   cursor: pointer;
-  font-family: 'Mochiy Pop P One', sans-serif;
+  font-family: 'Poppins', sans-serif;
   transition: transform 0.2s;
   font-size: 0.8rem;
   text-align: center;
@@ -156,7 +163,7 @@ body { margin: 0; }
 .process-section {
   position: relative; 
   background-color: #e7efd9;
-  padding: 5rem 2rem;
+  padding: 5rem 1rem;
   text-align: center;
   z-index: 3;
   width: 100%; 
@@ -169,16 +176,15 @@ body { margin: 0; }
 
 .process-section h2 {
   color: #1d3f46;
-  font-family: 'Mochiy Pop P One', sans-serif;
-  font-size: 2.5rem;
-  margin-bottom: 4rem;
+  font-size: 3rem;
+  margin-bottom: 2rem;
+  font-family: 'Poppins', sans-serif;
 }
 
 .process-steps {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 2rem;
-  max-width: 1200px;
   margin: 0 auto;
   padding: 0 2rem;
 }
@@ -239,6 +245,49 @@ body { margin: 0; }
   }
 }
 
+.image-container-works-section {
+  position: relative;
+  width: 250px;
+  height: 250px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.image-container-label{
+  margin-top: 1rem;
+}
+
+
+.step-image {
+  width: 200px;
+  height: auto;
+  margin-bottom: 1rem;
+  z-index: 2;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.ray {
+  width: 200px;
+  height: auto;
+  z-index: 1;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.5);
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.image-container-works-section:hover .ray {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1.2);
+}
+
 /* =========== CALL TO ACTION =========== */
 .cta-section {
   position: relative;
@@ -290,6 +339,7 @@ body { margin: 0; }
   color: #F6795B;
   transform: translateY(-5px);
 }
+
 
 /* Responsive Design */
 @media (max-width: 768px) {

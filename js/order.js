@@ -178,3 +178,20 @@ document.querySelector('.bento-box .add-to-cart').addEventListener('click', func
     ramenSection.classList.remove('hidden');
     customizeButton.disabled = false;
 });
+
+// Update add-to-cart counter in the navbar
+// js/order.js
+// Add this to your existing order.js file
+document.querySelectorAll('.add-to-cart').forEach(button => {
+    button.addEventListener('click', () => {
+        // Get current cart count
+        let cartCount = parseInt(localStorage.getItem('cartCount') || 0);
+        // Increment cart count
+        cartCount++;
+        // Save to localStorage
+        localStorage.setItem('cartCount', cartCount);
+        // Update display
+        updateCartCount();
+    });
+});
+

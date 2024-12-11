@@ -55,7 +55,7 @@ section img {
   position: relative;
   margin-top: 150px;
   text-align: center;
-  color: #fd8f3b;
+  color: #1d3f46;
   font-size: 8em;
   z-index: 3;
   text-decoration: dashed;
@@ -121,9 +121,6 @@ section img {
   position: relative;
 }
 
-
-
-
 .bento.hidden {
   opacity: 0;
   visibility: hidden;
@@ -151,23 +148,79 @@ align-items: center;
 
 .ramen-img {
   width: 100%;
-  height: auto;
+  height: 300px;
   margin-bottom: 1rem;
   position: relative;
 }
 
 .bento-img {
   width: 100%;
-  height: auto;
+  height: 300px;
   margin-bottom: 1rem;
   position: relative;
 }
+.price {
+  margin-top: 1rem;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Order section hover effects */
+.order-list .ramen,
+.order-list .bento {
+  transition: all 0.3s ease;
+  padding: 2rem;
+  cursor: pointer;
+}
+
+.order-list .ramen:hover,
+.order-list .bento:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.ramen-img,
+.bento-img {
+  transition: transform 0.3s ease;
+}
+
+.order-list .ramen:hover .ramen-img,
+.order-list .bento:hover .bento-img {
+  transform: scale(1.05);
+}
+
+.customize-ramen,
+.customize-bento {
+  transition: all 0.3s ease;
+  background-color: #F6795B;
+  color: white;
+  border: 2px solid #F6795B;
+  padding: 10px 20px;
+  border-radius: 25px;
+}
+
+.customize-ramen:hover,
+.customize-bento:hover {
+  background-color: transparent;
+  color: #F6795B;
+  transform: scale(1.1);
+}
+
+.item-title {
+  transition: color 0.3s ease;
+  font-family: 'Poppins', sans-serif;
+}
+
+.order-list .ramen:hover .item-title,
+.order-list .bento:hover .item-title {
+  color: #F6795B;
+}
+
 
 /* ======= CUSTOMIZE OPTION SHOW ======== */
 
 .customize-order-ramen {
   position: absolute;
-  top: 1080px;
+  top: 1000px;
   left: 670px;
   width: 600px;
   height: 400px;
@@ -192,7 +245,7 @@ align-items: center;
 
 .customize-order-bento {
   position: absolute;
-  top: 1050px;
+  top: 1000px;
   right: 670px;
   width: 600px;
   height: 400px;
@@ -205,9 +258,8 @@ align-items: center;
 }
 
 .customize-order-bento {
-  /* Existing styles remain */
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; 
+  -ms-overflow-style: none; 
 }
 
 .customize-order-bento::-webkit-scrollbar {
