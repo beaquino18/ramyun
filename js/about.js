@@ -57,3 +57,17 @@ document.addEventListener('DOMContentLoaded', () => {
   updateScrollImage();
 });
 
+
+document.addEventListener('scroll', () => {
+  const timeline = document.querySelector('.timeline');
+  const locationSection = document.querySelector('.location-hours');
+  const timelineRect = timeline.getBoundingClientRect();
+  const locationRect = locationSection.getBoundingClientRect();
+
+  // Hide timeline elements when reaching location section
+  if (locationRect.top <= window.innerHeight) {
+    timeline.style.setProperty('--timeline-visibility', 'hidden');
+  } else {
+    timeline.style.setProperty('--timeline-visibility', 'visible');
+  }
+});

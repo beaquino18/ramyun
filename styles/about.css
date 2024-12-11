@@ -34,7 +34,7 @@ section {
   background-position: center;
   background-repeat: no-repeat;
   position: relative;
-  z-index: 2; /* Above timeline */
+  z-index: 2; 
   background-color: #fff;
 }
 
@@ -137,14 +137,13 @@ section {
   overflow-y: scroll;
   height: 100vh;
   position: relative;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
 /* Add vertical line */
 .timeline::before {
-  content: '';
-  position: fixed;
   width: 6px;
-  background-color: rgba(255, 255, 255, 0.3);
+  background-color: #e7efd9;
   top: 0;
   bottom: 0;
   left: 50%;
@@ -152,14 +151,16 @@ section {
   z-index: 5;
 }
 
-.timeline-scroll{
-  width: 100px;
+.timeline::before,
+.timeline::after {
+  content: '';
+  position: fixed;
+  opacity: 1;
+  transition: opacity 0.3s ease;
 }
 
 /* Timeline scroll image */
 .timeline::after {
-  content: '';
-  position: fixed;
   width: 100px;
   height: 100px;
   background: url('../images/7 - timeline-scroll.svg') no-repeat center;
@@ -277,4 +278,99 @@ section {
     right: auto;
     left: 18px;
   }
+}
+
+
+/* LOCATION AND HOURS */
+
+.location-hours {
+  position: relative;
+  z-index: 2;
+  background: #1d3f46;
+  color: #fff;
+  padding: 6rem 2rem;
+  font-family: 'Poppins', sans-serif;
+  scroll-margin-top: 2rem;
+}
+
+.location-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.location-info h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 3rem;
+  font-family: 'Poppins', sans-serif;
+  color: #e7efd9;
+}
+
+.location-info h3 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  color: #e7efd9;
+}
+
+.address, .hours {
+  margin-bottom: 3rem;
+}
+
+.address p, .hours p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 0.5rem;
+  color: #fff;
+}
+
+.schedule .day-time {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.schedule .day-time span {
+  font-size: 1.1rem;
+}
+
+.location-map {
+  padding: 2rem;
+  background: rgba(255,255,255,0.1);
+  border-radius: 15px;
+  transition: transform 0.3s ease;
+}
+
+.location-map:hover {
+  transform: translateY(-5px);
+}
+
+.location-map img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+@media (max-width: 768px) {
+  .location-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  .location-info h2 {
+    font-size: 2rem;
+  }
+  
+  .location-info h3 {
+    font-size: 1.5rem;
+  }
+}
+
+.restaurant-map {
+  width: 500px;
+  height: auto;
 }
