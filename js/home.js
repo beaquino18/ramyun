@@ -8,14 +8,14 @@ window.addEventListener('scroll', function() {
     const scrollingDown = window.scrollY > lastScrollTop;
     lastScrollTop = window.scrollY;
     
-    // Start transition earlier at 60%
-    if (scrollPercent > 30) {
+    // Start transition at 20%
+    if (scrollPercent > 10) {
         nightImage.classList.remove('hidden');
         nightImage.classList.add('visible');
         
-        // Calculate opacity over a larger range (60% to 90%)
-        const nightOpacity = Math.min(1, (scrollPercent - 30) / 30);
-        const dayOpacity = Math.max(0, 1 - ((scrollPercent - 30) / 30));
+        // Calculate opacity over 20% to 50% range
+        const nightOpacity = Math.min(1, (scrollPercent - 10) / 20);
+        const dayOpacity = Math.max(0, 1 - ((scrollPercent - 10) / 20));
         
         // Apply smoother transitions
         nightImage.style.transition = 'opacity 0.3s ease-in-out';
@@ -38,7 +38,6 @@ window.addEventListener('scroll', function() {
         nightImage.style.opacity = 0;
     }
 });
-
 window.addEventListener('scroll', function() {
     const nightImage = document.querySelector('.night');
     const dayImage = document.querySelector('.day');
