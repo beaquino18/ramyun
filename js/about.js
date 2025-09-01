@@ -35,6 +35,7 @@ document.addEventListener('scroll', () => {
 
   // Update progress bar
   updateProgressBar();
+  updateTimelineDot();
 });
 
 // Progress bar functionality
@@ -49,21 +50,28 @@ function updateProgressBar() {
   }
 }
 
-// Intersection Observer for timeline animations
+// Intersection Observer for timeline animations and dot tracking
 document.addEventListener('DOMContentLoaded', () => {
   const timelineItems = document.querySelectorAll('.timeline-item');
   
-  // Create intersection observer for timeline animations
+  // Create intersection observer for timeline animations and active dot tracking
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
+        // Animate timeline item
         entry.target.style.opacity = '1';
         entry.target.style.transform = 'translateY(0)';
+        
+        // Add active class for dot animation
+        entry.target.classList.add('active');
+      } else {
+        // Remove active class when out of view
+        entry.target.classList.remove('active');
       }
     });
   }, {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
+    threshold: 0.3, // Trigger when 30% of the item is visible
+    rootMargin: '-20% 0px -20% 0px' // Only consider middle 60% of viewport
   });
 
   // Apply initial styles and observe timeline items
@@ -101,3 +109,33 @@ window.addEventListener('resize', () => {
   // Recalculate any positioning if needed
   updateProgressBar();
 });
+
+
+// Update moving timeline dot position
+function updateTimelineDot() {
+  const timeline = document.querySelector('.timeline');
+  const timelineItems = document.querySelectorAll('.timeline-item');
+  
+  if (!timeline || timelineItems.length === 0) return;
+  
+  let activeItem = null;
+  let minDistance = Infinity;
+  
+  timelineItems.forEach(item => {
+    const rect = item.getBoundingClientRect();
+    const itemCenter = rect.top + rect.height / 2;
+    const viewportCenter = window.innerHeight / 2;
+    const distance = Math.abs(itemCenter - viewportCenter);
+    
+    if (distance < minDistance) {
+      minDistance = distance;
+      activeItem = item;
+    }
+  });
+  
+  if (activeItem) {
+    const rect = activeItem.getBoundingClientRect();
+    const dotPosition = rect.top + rect.height / 2;
+    document.documentElement.style.setProperty('--timeline-dot-top', `${dotPosition}px`);
+  }
+}
