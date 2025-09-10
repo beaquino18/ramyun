@@ -12,41 +12,7 @@
 </head>
 <body>
   <!-- NAVRBAR -->
-  <nav class="navbar navbar-expand-md navbar-dark bg-secondary">
-    <div class="container-fluid">
-        <!-- Mobile brand -->
-        <a class="navbar-brand d-md-none" href="#">
-            <div class="brand-name">TezukuriLab</div>
-        </a>
-        
-        <!-- Toggler button -->
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        
-        <!-- Collapsible content -->
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav w-100 position-relative">
-                <li class="nav-item">
-                    <a class="nav-link nav-story" aria-current="page" href="about.html">Our Story</a>
-                </li>
-                <li class="nav-item position-absolute start-50 translate-middle-x">
-                    <!-- Desktop brand -->
-                    <a class="navbar-brand d-none d-md-block" href="index.html">
-                        <div class="brand-name">TezukuriLab</div>
-                    </a>
-                </li>
-                <li class="nav-item ms-auto">
-                    <a class="nav-link nav-order" href="order.html">Order</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link cart-item" href="checkout.html"><img src="images/cart-blue.svg" class="cart"><span>0</span></a>
-                    
-                </li>
-            </ul>
-        </div>
-    </div>
-  </nav>
+  <div id="navbar-container"></div>
 
   <!-- HERO IMAGE -->
   <section class="hero">
@@ -66,10 +32,9 @@
     </div>
   
     <div class="timeline">
-      <div class="timeline-item left">
-        
+      <div class="timeline-item left">  
+      
         <div class="story-card">
-          <div class="timeline-dot"></div>
           <img src="images/1 - image-pane.svg" alt="Chef Inu Portrait" class="image-timeline"/>
           <div class="story-content">
             <h2>Meet Chef Inu</h2>
@@ -81,7 +46,6 @@
   
       <div class="timeline-item right">
         <div class="story-card">
-          <div class="timeline-dot"></div>
           <img src="images/2 - image-pane.svg" alt="Astronaut Inu" class="image-timeline"/>
           <div class="story-content">
             <h2>The Space Explorer</h2>
@@ -92,7 +56,6 @@
   
       <div class="timeline-item left">
         <div class="story-card">
-          <div class="timeline-dot"></div>
           <img src="images/3 - image-pane.svg" alt="Swimmer Inu" class="image-timeline"/>
           <div class="story-content">
             <h2>The Cryptobanker</h2>
@@ -103,7 +66,6 @@
   
       <div class="timeline-item right">
         <div class="story-card">
-          <div class="timeline-dot"></div>
           <img src="images/4 - image-pane.svg" alt="Pirate Inu" class="image-timeline"/>
           <div class="story-content">
             <h2>The Sea Navigator</h2>
@@ -114,7 +76,6 @@
   
       <div class="timeline-item left">
         <div class="story-card">
-          <div class="timeline-dot"></div>
           <img src="images/5 - image-pane.svg" alt="Samurai Inu" class="image-timeline"/>
           <div class="story-content">
             <h2>The Disciplined Warrior</h2>
@@ -125,7 +86,6 @@
   
       <div class="timeline-item right">
         <div class="story-card">
-          <div class="timeline-dot"></div>
           <img src="images/6 - image-pane.svg" alt="Chef Inu" class="image-timeline"/>
           <div class="story-content">
             <h2>The Culinary Master</h2>
@@ -213,5 +173,6 @@
   </footer>
 
   <script src="js/about.js"></script>
+  <script src="js/navbar.js"></script>
 </body>
 </html>

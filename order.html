@@ -10,41 +10,7 @@
   <link rel="stylesheet" href="styles/navbar.css">
 </head>
 <body>
-  <nav class="navbar navbar-expand-md navbar-dark bg-secondary">
-    <div class="container-fluid">
-        <!-- Mobile brand -->
-        <a class="navbar-brand d-md-none" href="#">
-            <div class="brand-name">TezukuriLab</div>
-        </a>
-        
-        <!-- Toggler button -->
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        
-        <!-- Collapsible content -->
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav w-100 position-relative">
-                <li class="nav-item">
-                    <a class="nav-link nav-story" aria-current="page" href="about.html">Our Story</a>
-                </li>
-                <li class="nav-item position-absolute start-50 translate-middle-x">
-                    <!-- Desktop brand -->
-                    <a class="navbar-brand d-none d-md-block" href="index.html">
-                        <div class="brand-name">TezukuriLab</div>
-                    </a>
-                </li>
-                <li class="nav-item ms-auto">
-                    <a class="nav-link nav-order" href="order.html">Order</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link cart-item" href="checkout.html"><img src="images/cart-blue.svg" class="cart"><span>0</span></a>
-                    
-                </li>
-            </ul>
-        </div>
-    </div>
-</nav>
+  <div id="navbar-container"></div>
 
 <!-- 1 - Background, 2 - Mountain; 3 - Ramen Shop; 4 - Cherry Blossom  -->
   <section class="image-hero">
@@ -70,7 +36,6 @@
         <p class="price">$0.99</p>
       </div>
     </div>
-    </section>
 
     <!-- Customize order for Ramen -->
     <section class="customize-order-ramen">
@@ -120,9 +85,9 @@
           </div>
 
         </div>
-      <button class="add-to-cart">Add to cart</button>
+        <button class="add-to-cart">Add to cart</button>
+      </section>
     </section>
-  </section>
 
   <!-- Customize order for bento -->
   <section class="customize-order-bento">
@@ -177,6 +142,7 @@
     <button class="add-to-cart">Add to cart</button>
   </section>
   </section>
+  </section>
 
   <!-- Footer -->
   <footer class="footer-container">
@@ -218,6 +184,7 @@
 </footer>
 
   <script src="js/order.js"></script>
+  <script src="js/navbar.js"></script>
 
 </body>
 </html>

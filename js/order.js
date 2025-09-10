@@ -1,4 +1,3 @@
-
 let shop1 = document.getElementById('shop1');
 let shop2 = document.getElementById('shop2');
 let shop3 = document.getElementById('shop3');
@@ -9,16 +8,18 @@ const orderSection = document.getElementById('order');
 window.addEventListener('scroll', function() {
     var value = window.scrollY;
 
-  shop1.style.top = value * 0.5 + 'px';
-  shop2.style.left = value * 0.5 + 'px';
-  shop3.style.left = -value * 0.5 + 'px';
-  shop4.style.top = -value * 0.5 + 'px';
-  text.style.top = value * 1 + 'px';
+    shop1.style.top = value * 0.5 + 'px';
+    shop2.style.left = value * 0.5 + 'px';
+    shop3.style.left = -value * 0.5 + 'px';
+    shop4.style.top = -value * 0.5 + 'px';
+    text.style.top = value * 1 + 'px';
 });
 
-// Parallax effect
+// Improved parallax effect - similar to home.js
 window.addEventListener('scroll', () => {
     const navbar = document.querySelector('.navbar');
+    if (!navbar) return; // Exit if navbar not loaded yet
+    
     const scrollPosition = window.pageYOffset;
     const scrollPercent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
     const orderSection = document.getElementById('order');
@@ -31,14 +32,16 @@ window.addEventListener('scroll', () => {
         navbar.classList.remove('visible');
     }
     
-    // Dark mode toggle
+    // Dark mode toggle - consistent with home.js
     if (scrollPercent > 30) {
         navbar.classList.add('dark-mode');
+        navbar.classList.remove('navbar-light-bg');
     } else {
         navbar.classList.remove('dark-mode');
+        navbar.classList.add('navbar-light-bg');
     }
 
-    
+    // Order section specific styling
     if (scrollPosition >= orderSectionTop) {
         navbar.classList.add('order-section');
     } else {
@@ -90,7 +93,6 @@ document.querySelector('.bento-box .close').addEventListener('click', function()
     customizeButton.disabled = false;
 });
 
-
 // Helper function to handle single choice options
 function handleSingleChoice(button) {
     const parent = button.closest('.option-choices');
@@ -122,12 +124,31 @@ document.querySelectorAll('.choice-btn').forEach(button => {
     });
 });
 
-// add-to-cart button functionality. When clicked, the customize-order-ramen section
-// will be hidden and the bento section will be shown.
+// Add this at the top of order.js
+let cartCount = 0;
+
+// Function to update cart count display
+function updateCartCount() {
+    const cartCountElement = document.querySelector('.cart-item span');
+    if (cartCountElement) {
+        cartCountElement.textContent = cartCount;
+    }
+}
+
+// add-to-cart button functionality for ramen
 document.querySelector('.add-to-cart').addEventListener('click', function() {
     const customizeSection = document.querySelector('.customize-order-ramen');
     const bentoSection = document.querySelector('.bento');
     const customizeButton = document.querySelector('.customize-ramen');
+    
+    // Increment cart count and update display
+    cartCount++;
+    
+    // Update localStorage
+    localStorage.setItem('cartCount', cartCount);
+    
+    // Update display
+    updateCartCount();
     
     customizeSection.classList.remove('show');
     bentoSection.classList.remove('hidden');
@@ -140,58 +161,23 @@ document.querySelector('.bento-box .add-to-cart').addEventListener('click', func
     const ramenSection = document.querySelector('.ramen');
     const customizeButton = document.querySelector('.customize-bento');
     
-    customizeSection.classList.remove('show');
-    ramenSection.classList.remove('hidden');
-    customizeButton.disabled = false;
-});
-
-// Add this at the top of order.js
-let cartCount = 0;
-const cartCountElement = document.querySelector('.cart-item span');
-
-// Update the add-to-cart event listener for ramen
-document.querySelector('.add-to-cart').addEventListener('click', function() {
-    const customizeSection = document.querySelector('.customize-order-ramen');
-    const bentoSection = document.querySelector('.bento');
-    const customizeButton = document.querySelector('.customize-ramen');
-    
     // Increment cart count and update display
     cartCount++;
-    cartCountElement.textContent = cartCount;
     
-    customizeSection.classList.remove('show');
-    bentoSection.classList.remove('hidden');
-    customizeButton.disabled = false;
-});
-
-// Update the add-to-cart event listener for bento
-document.querySelector('.bento-box .add-to-cart').addEventListener('click', function() {
-    const customizeSection = document.querySelector('.customize-order-bento');
-    const ramenSection = document.querySelector('.ramen');
-    const customizeButton = document.querySelector('.customize-bento');
+    // Update localStorage
+    localStorage.setItem('cartCount', cartCount);
     
-    // Increment cart count and update display
-    cartCount++;
-    cartCountElement.textContent = cartCount;
+    // Update display
+    updateCartCount();
     
     customizeSection.classList.remove('show');
     ramenSection.classList.remove('hidden');
     customizeButton.disabled = false;
 });
 
-// Update add-to-cart counter in the navbar
-// js/order.js
-// Add this to your existing order.js file
-document.querySelectorAll('.add-to-cart').forEach(button => {
-    button.addEventListener('click', () => {
-        // Get current cart count
-        let cartCount = parseInt(localStorage.getItem('cartCount') || 0);
-        // Increment cart count
-        cartCount++;
-        // Save to localStorage
-        localStorage.setItem('cartCount', cartCount);
-        // Update display
-        updateCartCount();
-    });
+// Initialize cart count on page load
+document.addEventListener('DOMContentLoaded', function() {
+    // Load cart count from localStorage
+    cartCount = parseInt(localStorage.getItem('cartCount') || 0);
+    updateCartCount();
 });
-
