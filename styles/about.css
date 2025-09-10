@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Funnel+Sans:ital,wght@0,300..800;1,300..800&family=Mochiy+Pop+P+One&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+/* ===== BASE STYLES ===== */
 html, body {
   height: 100%;
   margin: 0;
@@ -75,6 +77,11 @@ section {
 
 }
 
+.hero.scrolled {
+  animation: slideOut 1s ease-out forwards;
+}
+
+/* ==== KEYFRAMES ==== */
 @keyframes slideIn {
   0% {
     opacity: 0;
@@ -84,11 +91,6 @@ section {
     opacity: 1;
     transform: translateY(0);
   }
-}
-
-/* Add transition for scroll animation */
-.hero.scrolled {
-  animation: slideOut 1s ease-out forwards;
 }
 
 @keyframes slideOut {
@@ -102,9 +104,19 @@ section {
   }
 }
 
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 
-/* ========== IMAGE PANE ========= */
-/* Timeline Container */
+
+/* ==== IMAGE PANE / TIMELINE ==== */
 .image-pane {
   background-color: #1d3f46;
   color: white;
@@ -141,7 +153,6 @@ section {
   padding: 4rem 0;
 }
 
-/* Vertical line */
 .timeline::before {
   content: '';
   position: absolute;
@@ -168,22 +179,6 @@ section {
   top: 50vh;
 }
 
-@media (max-width: 768px) {
-  .timeline::after {
-    left: 30px;
-    width: 40px;
-    height: 40px;
-  }
-}
-
-@media (max-width: 480px) {
-  .timeline::after {
-    left: 25px;
-    width: 35px;
-    height: 35px;
-  }
-}
-
 /* Timeline Items */
 .timeline-item {
   position: relative;
@@ -193,7 +188,6 @@ section {
   align-items: center;
   justify-content: center;
 }
-
 
 .timeline-item.left {
   justify-content: flex-start;
@@ -207,7 +201,7 @@ section {
   padding-left: 60px;
 }
 
-/* Story Cards */
+/* ==== STORY CARDS ==== */
 .story-card {
   background: #e7efd9;
   border-radius: 15px;
@@ -261,17 +255,7 @@ section {
   margin: 0;
 }
 
-/* Animations */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
+
 
 /* Responsive Design */
 @media (max-width: 768px) {
@@ -309,45 +293,7 @@ section {
   }
 }
 
-/* Tablet Responsiveness - 768px to 1024px */
-@media (max-width: 1024px) and (min-width: 769px) {
-  .story-card {
-    max-width: 350px;
-    padding: 1.8rem;
-  }
-  
-  .timeline-item.left {
-    padding-right: 40px;
-  }
-  
-  .timeline-item.right {
-    padding-left: 40px;
-  }
-}
-
-/* Small mobile - Under 480px */
-@media (max-width: 480px) {
-  .story-card {
-    padding: 1rem;
-  }
-  
-  .image-timeline {
-    max-width: 180px;
-  }
-  
-  .timeline-item {
-    padding-left: 60px !important;
-    padding-right: 15px !important;
-  }
-  
-  .timeline::before {
-    left: 25px;
-  }
-}
-
-
-/* LOCATION AND HOURS */
-
+/* ==== LOCATION AND HOURS ==== */
 .location-hours {
   position: relative;
   z-index: 2;
@@ -420,7 +366,72 @@ section {
   border-radius: 10px;
 }
 
+.restaurant-map {
+  width: 500px;
+  height: auto;
+}
+
+/* ==== MEDIA QUERIES ====*/
+
+/* Large Desktop and Tablet (769px to 1024px) */
+@media (max-width: 1024px) and (min-width: 769px) {
+  .story-card {
+    max-width: 350px;
+    padding: 1.8rem;
+  }
+  
+  .timeline-item.left {
+    padding-right: 40px;
+  }
+  
+  .timeline-item.right {
+    padding-left: 40px;
+  }
+}
+
+/* Tablet and Medium Screens (max-width: 768px) */
 @media (max-width: 768px) {
+  /* Timeline adjustments */
+  .timeline::before {
+    left: 30px;
+    transform: none;
+  }
+  
+  .timeline::after {
+    left: 30px;
+    width: 40px;
+    height: 40px;
+  }
+  
+  .timeline {
+    padding: 2rem 0;
+  }
+  
+  .timeline-item {
+    margin-bottom: 3rem;
+    justify-content: flex-start !important;
+    padding-left: 70px !important;
+    padding-right: 20px !important;
+  }
+  
+  .timeline-item.left,
+  .timeline-item.right {
+    justify-content: flex-start;
+    padding-left: 70px;
+    padding-right: 20px;
+  }
+  
+  .story-card {
+    max-width: 100%;
+    margin: 0;
+    padding: 1.5rem;
+  }
+  
+  .image-timeline {
+    max-width: 200px;
+  }
+  
+  /* Location and Hours adjustments */
   .location-grid {
     grid-template-columns: 1fr;
     gap: 2rem;
@@ -435,7 +446,28 @@ section {
   }
 }
 
-.restaurant-map {
-  width: 500px;
-  height: auto;
+/* Small Mobile (max-width: 480px) */
+@media (max-width: 480px) {
+  .timeline::after {
+    left: 25px;
+    width: 35px;
+    height: 35px;
+  }
+  
+  .timeline::before {
+    left: 25px;
+  }
+  
+  .story-card {
+    padding: 1rem;
+  }
+  
+  .image-timeline {
+    max-width: 180px;
+  }
+  
+  .timeline-item {
+    padding-left: 60px !important;
+    padding-right: 15px !important;
+  }
 }

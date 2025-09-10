@@ -15,17 +15,13 @@
 }
 
 .cart-item span{
-  display: flex;
   width: 15px;
-  height: 15px;
   background-color: red;
-  justify-content: center;
-  align-items: center;
+  text-align: center;
   color: #fff;
   border-radius: 50%;
   position: absolute;
-  top: 60%;   /* Adjust this to move badge up/down */
-  right: -5px;   /* Add this to position on right side */
+  top: 60%;
   font-size: 12px;
 }
 
@@ -33,6 +29,10 @@
   width: 30px;
   height: 30px;
   /* margin-left: auto; */
+}
+
+.cart-plus-counter {
+  justify-content: center;
 }
 
 .nav-story, .nav-order {
@@ -79,4 +79,99 @@
 .navbar.order-section {
   background-color: #e7efd9 !important;
   color: #1d3f46 !important;
+}
+
+
+/* Desktop navbar styles */
+@media (min-width: 768px) {
+  .navbar-nav {
+    height: 100%;
+    align-items: center;
+  }
+  
+  .navbar-nav .nav-item.position-absolute {
+    position: absolute !important;
+    left: 50% !important;
+    top: 0 !important;
+    height: 100% !important;
+    display: flex !important;
+    align-items: center !important;
+    transform: translateX(-50%) !important;
+  }
+  
+  .navbar-nav .nav-item.position-absolute .navbar-brand {
+    margin: 0 !important;
+    padding: 0 !important;
+    line-height: 1 !important;
+  }
+}
+
+/* Mobile navbar styles */
+@media (max-width: 767.98px) {
+  .navbar-collapse {
+    background-color: #1d3f46; /* Match your navbar background */
+    margin: 0.5rem -15px 0 -15px;
+    padding: 1rem 15px;
+    border-radius: 0;
+  }
+  
+  .navbar-collapse.show .navbar-nav {
+    flex-direction: column !important;
+    align-items: center !important;
+  }
+  
+  .navbar-collapse.show .nav-item {
+    position: static !important;
+    transform: none !important;
+    margin: 0.25rem 0 !important;
+    width: 100%;
+    text-align: center;
+  }
+  
+  .navbar-collapse.show .nav-item.position-absolute {
+    position: static !important;
+    transform: none !important;
+  }
+  
+  .navbar-collapse.show .nav-item.ms-auto {
+    margin-left: 0 !important;
+  }
+  
+  .navbar-collapse.show .nav-link {
+    color: white !important;
+    padding: 0.75rem 1rem;
+    display: block;
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    border-radius: 0.25rem;
+    margin: 0.125rem 0.5rem;
+  }
+  
+  .navbar-collapse.show .nav-link:hover {
+    background-color: rgba(255,255,255,0.15) !important;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+  
+  /* Hide the desktop brand in mobile menu */
+  .navbar-collapse .navbar-brand {
+    display: none !important;
+  }
+  
+  /* Dark mode styles for mobile */
+  .navbar.dark-mode .navbar-collapse {
+    background-color: #e7efd9;
+  }
+  
+  .navbar.dark-mode .navbar-collapse.show .nav-link {
+    color: #1d3f46 !important;
+  }
+  
+  .navbar.dark-mode .navbar-collapse.show .nav-link:hover {
+    background-color: rgba(29, 63, 70, 0.15) !important;
+  }
+
+  
 }
